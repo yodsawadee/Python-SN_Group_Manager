@@ -1,0 +1,378 @@
+from constant_initialization import *
+from UtilitiesRecord_ui import *
+from DatabaseSystem import *
+from ResidentHistory_ui import *
+from AllCurrentResidents_ui import *
+
+class Information(QMainWindow):
+    def __init__(self,menu):
+        QMainWindow.__init__(self, None)
+        
+        loader = QUiLoader()
+        form = loader.load("UI/uiInformation.ui", None)
+        
+        self.setWindowTitle("SN Group Manager")
+        self.setWindowIcon(QIcon('images/icon.png'))
+        self.setCentralWidget(form)
+        self.setFixedSize(display_width,display_height)
+        
+        self.menu = menu
+
+        self.building_sw = form.findChild(QStackedWidget, "Building_sw")
+        
+        self.back_btn = form.findChild(QPushButton, "back_btn")
+        self.back_btn.clicked.connect(self.back)
+
+        self.F1_btn = form.findChild(QPushButton, "F1_btn")
+        self.F1_btn.clicked.connect(lambda: self.floor(0))
+
+        self.F2_btn = form.findChild(QPushButton, "F2_btn")
+        self.F2_btn.clicked.connect(lambda: self.floor(1))
+
+        self.F3_btn = form.findChild(QPushButton, "F3_btn")
+        self.F3_btn.clicked.connect(lambda: self.floor(2))
+
+        self.F4_btn = form.findChild(QPushButton, "F4_btn")
+        self.F4_btn.clicked.connect(lambda: self.floor(3))
+
+        self.F5_btn = form.findChild(QPushButton, "F5_btn")
+        self.F5_btn.clicked.connect(lambda: self.floor(4))
+
+        self.db = DatabaseSys()
+
+        #Room
+        self.room101 = form.findChild(QPushButton, "pb101")
+        self.room101.clicked.connect(lambda: self.showInfo(101))
+        self.btnColor(self.room101, "101")
+        self.room102 = form.findChild(QPushButton, "pb102")
+        self.room102.clicked.connect(lambda: self.showInfo(102))
+        self.btnColor(self.room102, "102")
+        self.room103 = form.findChild(QPushButton, "pb103")
+        self.room103.clicked.connect(lambda: self.showInfo(103))
+        self.btnColor(self.room103, "103")
+        self.room104 = form.findChild(QPushButton, "pb104")
+        self.room104.clicked.connect(lambda: self.showInfo(104))
+        self.btnColor(self.room104, "104")
+        self.room105 = form.findChild(QPushButton, "pb105")
+        self.room105.clicked.connect(lambda: self.showInfo(105))
+        self.btnColor(self.room105, "105")
+        self.room106 = form.findChild(QPushButton, "pb106")
+        self.room106.clicked.connect(lambda: self.showInfo(106))
+        self.btnColor(self.room106, "106")
+        self.room107 = form.findChild(QPushButton, "pb107")
+        self.room107.clicked.connect(lambda: self.showInfo(107))
+        self.btnColor(self.room107, "107")
+        self.room108 = form.findChild(QPushButton, "pb108")
+        self.room108.clicked.connect(lambda: self.showInfo(108))
+        self.btnColor(self.room108, "108")
+        self.room109 = form.findChild(QPushButton, "pb109")
+        self.room109.clicked.connect(lambda: self.showInfo(109))
+        self.btnColor(self.room109, "109")
+        self.room110 = form.findChild(QPushButton, "pb110")
+        self.room110.clicked.connect(lambda: self.showInfo(110))
+        self.btnColor(self.room110, "110")
+        self.room111 = form.findChild(QPushButton, "pb111")
+        self.room111.clicked.connect(lambda: self.showInfo(111))
+        self.btnColor(self.room111, "111")
+        self.room112 = form.findChild(QPushButton, "pb112")
+        self.room112.clicked.connect(lambda: self.showInfo(112))
+        self.btnColor(self.room112, "112")
+
+        self.room201 = form.findChild(QPushButton, "pb201")
+        self.room201.clicked.connect(lambda: self.showInfo(201))
+        self.btnColor(self.room201, "201")
+        self.room202 = form.findChild(QPushButton, "pb202")
+        self.room202.clicked.connect(lambda: self.showInfo(202))
+        self.btnColor(self.room202, "202")
+        self.room203 = form.findChild(QPushButton, "pb203")
+        self.room203.clicked.connect(lambda: self.showInfo(203))
+        self.btnColor(self.room203, "203")
+        self.room204 = form.findChild(QPushButton, "pb204")
+        self.room204.clicked.connect(lambda: self.showInfo(204))
+        self.btnColor(self.room204, "204")
+        self.room205 = form.findChild(QPushButton, "pb205")
+        self.room205.clicked.connect(lambda: self.showInfo(205))
+        self.btnColor(self.room205, "205")
+        self.room206 = form.findChild(QPushButton, "pb206")
+        self.room206.clicked.connect(lambda: self.showInfo(206))
+        self.btnColor(self.room206, "206")
+        self.room207 = form.findChild(QPushButton, "pb207")
+        self.room207.clicked.connect(lambda: self.showInfo(207))
+        self.btnColor(self.room207, "207")
+        self.room208 = form.findChild(QPushButton, "pb208")
+        self.room208.clicked.connect(lambda: self.showInfo(208))
+        self.btnColor(self.room208, "208")
+        self.room209 = form.findChild(QPushButton, "pb209")
+        self.room209.clicked.connect(lambda: self.showInfo(209))
+        self.btnColor(self.room209, "209")
+        self.room210 = form.findChild(QPushButton, "pb210")
+        self.room210.clicked.connect(lambda: self.showInfo(210))
+        self.btnColor(self.room210, "210")
+        self.room211 = form.findChild(QPushButton, "pb211")
+        self.room211.clicked.connect(lambda: self.showInfo(211))
+        self.btnColor(self.room211, "211")
+        self.room212 = form.findChild(QPushButton, "pb212")
+        self.room212.clicked.connect(lambda: self.showInfo(212))
+        self.btnColor(self.room212, "212")
+        self.room213 = form.findChild(QPushButton, "pb213")
+        self.room213.clicked.connect(lambda: self.showInfo(213))
+        self.btnColor(self.room213, "213")
+        self.room214 = form.findChild(QPushButton, "pb214")
+        self.room214.clicked.connect(lambda: self.showInfo(214))
+        self.btnColor(self.room214, "214")
+        self.room215 = form.findChild(QPushButton, "pb215")
+        self.room215.clicked.connect(lambda: self.showInfo(215))
+        self.btnColor(self.room215, "215")
+        self.room216 = form.findChild(QPushButton, "pb216")
+        self.room216.clicked.connect(lambda: self.showInfo(216))
+        self.btnColor(self.room216, "216")
+        self.room217 = form.findChild(QPushButton, "pb217")
+        self.room217.clicked.connect(lambda: self.showInfo(217))
+        self.btnColor(self.room217, "217")
+
+        self.room301 = form.findChild(QPushButton, "pb301")
+        self.room301.clicked.connect(lambda: self.showInfo(301))
+        self.btnColor(self.room301, "301")
+        self.room302 = form.findChild(QPushButton, "pb302")
+        self.room302.clicked.connect(lambda: self.showInfo(302))
+        self.btnColor(self.room302, "302")
+        self.room303 = form.findChild(QPushButton, "pb303")
+        self.room303.clicked.connect(lambda: self.showInfo(303))
+        self.btnColor(self.room303, "303")
+        self.room304 = form.findChild(QPushButton, "pb304")
+        self.room304.clicked.connect(lambda: self.showInfo(304))
+        self.btnColor(self.room304, "304")
+        self.room305 = form.findChild(QPushButton, "pb305")
+        self.room305.clicked.connect(lambda: self.showInfo(305))
+        self.btnColor(self.room305, "305")
+        self.room306 = form.findChild(QPushButton, "pb306")
+        self.room306.clicked.connect(lambda: self.showInfo(306))
+        self.btnColor(self.room306, "306")
+        self.room307 = form.findChild(QPushButton, "pb307")
+        self.room307.clicked.connect(lambda: self.showInfo(307))
+        self.btnColor(self.room307, "307")
+        self.room308 = form.findChild(QPushButton, "pb308")
+        self.room308.clicked.connect(lambda: self.showInfo(308))
+        self.btnColor(self.room308, "308")
+        self.room309 = form.findChild(QPushButton, "pb309")
+        self.room309.clicked.connect(lambda: self.showInfo(309))
+        self.btnColor(self.room309, "309")
+        self.room310 = form.findChild(QPushButton, "pb310")
+        self.room310.clicked.connect(lambda: self.showInfo(310))
+        self.btnColor(self.room310, "310")
+        self.room311 = form.findChild(QPushButton, "pb311")
+        self.room311.clicked.connect(lambda: self.showInfo(311))
+        self.btnColor(self.room311, "311")
+        self.room312 = form.findChild(QPushButton, "pb312")
+        self.room312.clicked.connect(lambda: self.showInfo(312))
+        self.btnColor(self.room312, "312")
+        self.room313 = form.findChild(QPushButton, "pb313")
+        self.room313.clicked.connect(lambda: self.showInfo(313))
+        self.btnColor(self.room313, "313")
+        self.room314 = form.findChild(QPushButton, "pb314")
+        self.room314.clicked.connect(lambda: self.showInfo(314))
+        self.btnColor(self.room314, "314")
+        self.room315 = form.findChild(QPushButton, "pb315")
+        self.room315.clicked.connect(lambda: self.showInfo(315))
+        self.btnColor(self.room315, "315")
+        self.room316 = form.findChild(QPushButton, "pb316")
+        self.room316.clicked.connect(lambda: self.showInfo(316))
+        self.btnColor(self.room316, "316")
+        self.room317 = form.findChild(QPushButton, "pb317")
+        self.room317.clicked.connect(lambda: self.showInfo(317))
+        self.btnColor(self.room317, "317")
+
+        self.room401 = form.findChild(QPushButton, "pb401")
+        self.room401.clicked.connect(lambda: self.showInfo(401))
+        self.btnColor(self.room401, "401")
+        self.room402 = form.findChild(QPushButton, "pb402")
+        self.room402.clicked.connect(lambda: self.showInfo(402))
+        self.btnColor(self.room402, "402")
+        self.room403 = form.findChild(QPushButton, "pb403")
+        self.room403.clicked.connect(lambda: self.showInfo(403))
+        self.btnColor(self.room403, "403")
+        self.room404 = form.findChild(QPushButton, "pb404")
+        self.room404.clicked.connect(lambda: self.showInfo(404))
+        self.btnColor(self.room404, "404")
+        self.room405 = form.findChild(QPushButton, "pb405")
+        self.room405.clicked.connect(lambda: self.showInfo(405))
+        self.btnColor(self.room405, "405")
+        self.room406 = form.findChild(QPushButton, "pb406")
+        self.room406.clicked.connect(lambda: self.showInfo(406))
+        self.btnColor(self.room406, "406")
+        self.room407 = form.findChild(QPushButton, "pb407")
+        self.room407.clicked.connect(lambda: self.showInfo(407))
+        self.btnColor(self.room407, "407")
+        self.room408 = form.findChild(QPushButton, "pb408")
+        self.room408.clicked.connect(lambda: self.showInfo(408))
+        self.btnColor(self.room408, "408")
+        self.room409 = form.findChild(QPushButton, "pb409")
+        self.room409.clicked.connect(lambda: self.showInfo(409))
+        self.btnColor(self.room409, "409")
+        self.room410 = form.findChild(QPushButton, "pb410")
+        self.room410.clicked.connect(lambda: self.showInfo(410))
+        self.btnColor(self.room410, "410")
+        self.room411 = form.findChild(QPushButton, "pb411")
+        self.room411.clicked.connect(lambda: self.showInfo(411))
+        self.btnColor(self.room411, "411")
+        self.room412 = form.findChild(QPushButton, "pb412")
+        self.room412.clicked.connect(lambda: self.showInfo(412))
+        self.btnColor(self.room412, "412")
+        self.room413 = form.findChild(QPushButton, "pb413")
+        self.room413.clicked.connect(lambda: self.showInfo(413))
+        self.btnColor(self.room413, "413")
+        self.room414 = form.findChild(QPushButton, "pb414")
+        self.room414.clicked.connect(lambda: self.showInfo(414))
+        self.btnColor(self.room414, "414")
+        self.room415 = form.findChild(QPushButton, "pb415")
+        self.room415.clicked.connect(lambda: self.showInfo(415))
+        self.btnColor(self.room415, "415")
+        self.room416 = form.findChild(QPushButton, "pb416")
+        self.room416.clicked.connect(lambda: self.showInfo(416))
+        self.btnColor(self.room416, "416")
+        self.room417 = form.findChild(QPushButton, "pb417")
+        self.room417.clicked.connect(lambda: self.showInfo(417))
+        self.btnColor(self.room417, "417")
+
+        self.room501 = form.findChild(QPushButton, "pb501")
+        self.room501.clicked.connect(lambda: self.showInfo(501))
+        self.btnColor(self.room501, "501")
+        self.room502 = form.findChild(QPushButton, "pb502")
+        self.room502.clicked.connect(lambda: self.showInfo(502))
+        self.btnColor(self.room502, "502")
+        self.room503 = form.findChild(QPushButton, "pb503")
+        self.room503.clicked.connect(lambda: self.showInfo(503))
+        self.btnColor(self.room503, "503")
+        self.room504 = form.findChild(QPushButton, "pb504")
+        self.room504.clicked.connect(lambda: self.showInfo(504))
+        self.btnColor(self.room504, "504")
+        self.room505 = form.findChild(QPushButton, "pb505")
+        self.room505.clicked.connect(lambda: self.showInfo(505))
+        self.btnColor(self.room505, "505")
+        self.room506 = form.findChild(QPushButton, "pb506")
+        self.room506.clicked.connect(lambda: self.showInfo(506))
+        self.btnColor(self.room506, "506")
+        self.room507 = form.findChild(QPushButton, "pb507")
+        self.room507.clicked.connect(lambda: self.showInfo(507))
+        self.btnColor(self.room507, "507")
+        self.room508 = form.findChild(QPushButton, "pb508")
+        self.room508.clicked.connect(lambda: self.showInfo(508))
+        self.btnColor(self.room508, "508")
+        self.room509 = form.findChild(QPushButton, "pb509")
+        self.room509.clicked.connect(lambda: self.showInfo(509))
+        self.btnColor(self.room509, "509")
+        self.room510 = form.findChild(QPushButton, "pb510")
+        self.room510.clicked.connect(lambda: self.showInfo(510))
+        self.btnColor(self.room510, "510")
+        self.room511 = form.findChild(QPushButton, "pb511")
+        self.room511.clicked.connect(lambda: self.showInfo(511))
+        self.btnColor(self.room511, "511")
+        self.room512 = form.findChild(QPushButton, "pb512")
+        self.room512.clicked.connect(lambda: self.showInfo(512))
+        self.btnColor(self.room512, "512")
+        self.room513 = form.findChild(QPushButton, "pb513")
+        self.room513.clicked.connect(lambda: self.showInfo(513))
+        self.btnColor(self.room513, "513")
+        self.room514 = form.findChild(QPushButton, "pb514")
+        self.room514.clicked.connect(lambda: self.showInfo(514))
+        self.btnColor(self.room514, "514")
+        self.room515 = form.findChild(QPushButton, "pb515")
+        self.room515.clicked.connect(lambda: self.showInfo(515))
+        self.btnColor(self.room515, "515")
+
+        self.roomNo = 101
+        self.floorNo = 1
+
+        self.utilities_record_btn = form.findChild(QPushButton, "utilities_record_btn")
+        self.utilities_record_btn.clicked.connect(lambda: self.utilities_record_call(self.roomNo))
+        self.utilities_record_btn.setEnabled(False)
+
+        self.resHis_btn = form.findChild(QPushButton, "resHis_btn")
+        self.resHis_btn.clicked.connect(self.resident_history)
+
+        self.allRes_btn = form.findChild(QPushButton, "allRes_btn")
+        self.allRes_btn.clicked.connect(self.all_current_residents)
+        
+        #listWidget
+        self.roomInfo_listWidget = form.findChild(QListWidget, "roomInfo_listWidget")
+        self.resInfo_listWidget = form.findChild(QListWidget, "resInfo_listWidget")
+
+        #Layout
+        self.room_layout = QVBoxLayout()
+        self.res_layout = QVBoxLayout()
+
+    def btnColor(self, btn, rN):
+        roomNo = rN
+        if(self.db.checkStatusIftheroomisCheckedIn(str(roomNo))==True) and (self.db.checkExceedCheckoutDate(str(roomNo)) == False):
+            self.setButtonColor(btn, 'orange')
+        elif(self.db.checkStatusIftheroomisCheckedIn(str(roomNo))==True) and (self.db.checkExceedCheckoutDate(str(roomNo)) == True):
+            self.setButtonColor(btn, 'red')
+        else:
+            self.setButtonColor(btn, 'green')
+        
+    def setButtonColor(self, btn, color):
+        btn.setFlat(True)
+        palette = QPalette(btn.palette())
+        palette.setColor(QPalette.Button, QColor(color))
+        btn.setAutoFillBackground(True)
+        btn.setPalette(palette)
+        btn.update()
+
+    def getRoomNo(self):
+        return self.roomNo
+
+    def showInfo(self, roomNo):
+        self.roomNo = roomNo
+        self.utilities_record_btn.setEnabled(True)
+        
+        #room_layout
+        self.clearInfo(self.room_layout)
+        self.room_layout.addWidget(QLabel(str("-------")+str(roomNo)+str("-------\n") + self.db.readRoomInfo(roomNo)))
+        self.roomInfo_listWidget.setLayout(self.room_layout)
+        self.roomInfo_listWidget.show()
+        
+        #res_layout
+        self.clearInfo(self.res_layout)
+        self.res_layout.addWidget(QLabel(str("-------")+str(roomNo)+str("-------\n") + self.db.readResidentInfo(roomNo)))
+        self.resInfo_listWidget.setLayout(self.res_layout)
+        self.resInfo_listWidget.show()
+
+
+    def clearInfo(self, layout):
+        if layout is not None:
+            while layout.count():
+                item = layout.takeAt(0)
+                widget = item.widget()
+                if widget is not None:
+                    widget.deleteLater()
+                else:
+                    self.clearInfo(item.layout)
+        
+    def floor(self, idx):
+        self.floorNo = idx
+        self.building_sw.setCurrentIndex(idx)
+
+    def utilities_record_call(self,roomNo):
+        self.utilities_record = UtilitiesRecord(roomNo)
+        self.utilities_record.show()
+
+    def resident_history(self):
+        self.rh = ResidentHistory()
+        self.rh.show()
+
+    def all_current_residents(self):
+        self.rc = AllCurrentResidents()
+        self.rc.show()
+        
+    def back(self):
+        self.clearInfo(self.room_layout)
+        self.clearInfo(self.res_layout)
+        self.utilities_record_btn.setEnabled(False)
+        self.menu.show()
+        self.hide()
+
+    def paintEvent(self, e): #for adding an image
+        p = QPainter()
+        p.begin(self)
+        p.drawImage(QRect(0,0,display_width,display_height), bg)
+        p.end()

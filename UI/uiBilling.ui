@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>MS Sans Serif</family>
+    <pointsize>20</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QComboBox" name="roomno">
+    <property name="geometry">
+     <rect>
+      <x>235</x>
+      <y>120</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="room">
+    <property name="geometry">
+     <rect>
+      <x>55</x>
+      <y>120</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Room</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="elect">
+    <property name="geometry">
+     <rect>
+      <x>55</x>
+      <y>195</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Electricity</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="water">
+    <property name="geometry">
+     <rect>
+      <x>55</x>
+      <y>275</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Water</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cont">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>500</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Continue</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="back">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>505</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="einput">
+    <property name="geometry">
+     <rect>
+      <x>235</x>
+      <y>195</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+      <italic>false</italic>
+     </font>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="winput">
+    <property name="geometry">
+     <rect>
+      <x>235</x>
+      <y>275</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+     </font>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Res_Info_Label">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>254</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Residence Information</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Room_Info_Label">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>69</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Room Information</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="roomInfo_listWidget">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>105</y>
+      <width>361</width>
+      <height>141</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="resInfo_listWidget">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>295</y>
+      <width>361</width>
+      <height>181</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="showinfo_btn">
+    <property name="geometry">
+     <rect>
+      <x>125</x>
+      <y>335</y>
+      <width>146</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show Info</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
